@@ -1,0 +1,65 @@
+Analysis of Berkeley Acceptances Using the DecisionTrees and RandomForests
+--------------------------------------------------------------------------
+
+
+Several different DecisionTrees and RandomForests were created in order to analyze the
+Berkeley acceptance data. Specifically, I used DecisionTrees with many different alphas:
+0.2, 0.4, 0.6, and 0.8, and RandomForests with 1, 2, 5, and 10 trees. Below are the 
+results of the predictions:
+
+DecisionTrees:
+--------------
+
+alpha = 0: 
+
+When alpha=0, no pruning occurs. This means that the test dataset will exactly
+follow whatever tree structure the training dataset had that allowed each observation to 
+be perfectly split by whether or not the individual was accepted. When we did not prune,
+we still did pretty good at predicting (about 80%). On one representative trial, about 58% of the 
+observations were true negatives (i.e. we predicted that the individual did not get in, and they 
+did not), 21%% were false positives (i.e. we predicted that the individual got in, and they did not),
+0% were false negatives (i.e. we predicted that they did not get in but they did), and 21% were
+true positives (i.e. we predicted that they got in and they did).
+
+
+
+0 < alpha < 1
+
+When alpha was between 0 and 1, we found that the forest did an excellent job at predicting
+true negatives, but that the overwhelming majority of the time, it predicted few individuals,
+if any, would be accepted. Therefore, there were several false negatives. Overall, there 
+were between 58% and 71% true negatives, and somewhere around 29% and 42% false negatives.
+
+
+
+RandomForests:
+--------------
+
+As expected, RandomForests performed much better than a single DecisionTree. As a sanity check,
+I made sure that when the number of trees in the RandomForest is equal to 1, we end up with 
+very similar results as when we are using a DecisionTree without pruning (although this will
+vary a little bit because we are randomizing the data we build and test the data on). Below
+are representative results of RandomForest predictions with other sizes of DecisionTrees:
+
+2 Trees:
+
+When there were 2 trees in the RandomForest, the performance wasn't too great. On one representative
+sample, we had 58% true negatives, 17% false positives, 25% false negatives, and 0 true positives.
+This is still better than guessing since only about 1/4 of the individuals were accepted, but 
+the predections improved (as expected) when we increased the number of trees in the RandomForest.
+
+
+5 trees:
+
+With 5 trees, the RandomForest predections tended to improve moderately, especially with predicting 
+the individuals that were accepted. We tended to have around 37% true negatives, 25% false positives, 
+12% false negatives, and 25% true positives.
+
+
+In general, the more trees that were added, the better the overall performance was. There tended to
+be a higher rate of prediction for those who did get in, but also an overall increase in true
+positives and true negatives, and a decrease in false positives and false negatives. However, since
+there are other factors that go into a decision, we were never able to perfectly predict who was
+accepted and who was rejected.
+
+

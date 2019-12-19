@@ -1,0 +1,16 @@
+ncalls  tottime  percall  cumtime  percall filename:lineno(function) 
+
+71    0.066    0.001   44.279    0.624 <ipython-input-3-080535cdbb03>:136(best_split)
+     71/1    0.004    0.000   44.805   44.805 <ipython-input-3-080535cdbb03>:184(make_children)
+     71/1    0.003    0.000   44.808   44.808 <ipython-input-3-080535cdbb03>:2(__init__)
+      710    0.015    0.000    0.515    0.001 <ipython-input-3-080535cdbb03>:44(potential_splits)
+     2540    0.279    0.000   43.557    0.017 <ipython-input-3-080535cdbb03>:73(impurity_reduction)
+        1    0.000    0.000   44.808   44.808 <ipython-input-4-d99507a9d4b2>:2(__init__)
+        1    0.000    0.000   44.808   44.808 <ipython-input-6-30a8ec2bffbf>:1(time_buildtree)
+
+
+It appears that the functions requiring splits to be made take the longest. This is likely because
+it uses a double for loop to loop through many values of every column in the X matrix. It is estimated
+that the time it takes to create the tree is on the order of O(n^0.5), where n is the number of rows in 
+the dataframe. This notation seems to hold when the number of columns is less than 15 as shown in 
+Time_Tree_Rows.png. 
