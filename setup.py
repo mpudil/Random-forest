@@ -13,7 +13,7 @@ setup(
     description="A package to create random forest in Python and decision trees in SQL",
     long_description=readme,
     long_description_content_type="text/markdown",
-    url="https://github.com/your_package/homepage/",
+    url="https://github.com/sqlrandforest/homepage/",
     packages=find_packages(),
     install_requires=requirements,
     classifiers=[
