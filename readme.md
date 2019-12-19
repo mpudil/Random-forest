@@ -1,38 +1,38 @@
 # Python and SQL Classification Trees and Random Forests
 
-Python implementation of classification tree and random forest as described [here](https://github.com/36-750/problem-bank/blob/master/All/classification-tree.pdf). With user-provided credentials, it also provides classification trees, with 
+Python implementation of classification tree and random forest as described [here](https://github.com/mpudil/Random-forest/blob/master/classification-tree-description.pdf). With user-provided credentials, it also provides classification trees, with 
 prediction, for data stored in SQL tables.
 
 The overall organization of modules, files, and folders is as follows:
 
-The [Empirical](https://github.com/36-750/assignments-mpudil/tree/classification-tree-3/classification-tree/Empirical) folder includes an example of real-world data used to analyze the predictive power of the 
-Decision trees and random forests under various circumstances. The empirical testing was performed on the file [Acceptance.csv](hhttps://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/Empirical/acceptance.csv), which is publically-available data on acceptance to Berkeley acceptance. It is used to test prediction on a real-world dataset for the decision trees and random forest (with default cross-validation and pruning values). 
+The [Empirical](https://github.com/mpudil/Random-forest/blob/master/Empirical) folder includes an example of real-world data used to analyze the predictive power of the 
+Decision trees and random forests under various circumstances. The empirical testing was performed on the file [Acceptance.csv](hhttps://github.com/mpudil/Random-forest/blob/master/Empirical/acceptance.csv), which is publically-available data on acceptance to Berkeley acceptance. It is used to test prediction on a real-world dataset for the decision trees and random forest (with default cross-validation and pruning values). 
 
-The [Resources](https://github.com/36-750/assignments-mpudil/tree/classification-tree-3/classification-tree/Resources) folder includes the SQL functions necessary to implement before creating a SQL-based tree. It also includes the paper from Breiman that details more explicitly the functionality of Random Forests in general. 
+The [Resources](https://github.com/mpudil/Random-forest/blob/master/Resources) folder includes the SQL functions necessary to implement before creating a SQL-based tree. It also includes the paper from Breiman that details more explicitly the functionality of Random Forests in general. 
 
-The [Timing_Profiling](https://github.com/36-750/assignments-mpudil/tree/classification-tree-3/classification-tree/Timing_Profiling) folder includes code used to test the speed of the regression tree 
+The [Timing_Profiling](https://github.com/mpudil/Random-forest/blob/master/Timing_Profiling) folder includes code used to test the speed of the regression tree 
 along with relevant graphs that plot the number of rows/columns in the data against the time taken 
 to create the tree.
 
 
-The [classification_tree.py](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/classification_tree.py) module contains the functions, classes, and methods necesary to grow, prune, and predict a regression tree given some training data. 
+The [classification_tree.py](https://github.com/mpudil/Random-forest/blob/master/classification_tree.py) module contains the functions, classes, and methods necesary to grow, prune, and predict a regression tree given some training data. 
 
-The [random_forest.py](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/random_forest.py) module includes the code for creating a random forest and using
+The [random_forest.py](https://github.com/mpudil/Random-forest/blob/master/random_forest.py) module includes the code for creating a random forest and using
 a random forest for predictions.
 
-The [sql_tree.py](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/sql_tree.py) module includes the code for creating a decision tree from
+The [sql_tree.py](https://github.com/mpudil/Random-forest/blob/master/sql_tree.py) module includes the code for creating a decision tree from
 data that is stored in SQL and using it for predictions.
 
-The [test_classification_tree.py](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/test_classification_tree.py) file includes tests for the classification tree.
+The [test_classification_tree.py](https://github.com/mpudil/Random-forest/blob/master/test_classification_tree.py) file includes tests for the classification tree.
 
-The [test_random_forest.py](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/test_random_forest.py) file includes tests for the random forest.
+The [test_random_forest.py](https://github.com/mpudil/Random-forest/blob/master/test_random_forest.py) file includes tests for the random forest.
 
-The [test_sql_tree.py](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/test_sql_tree.py) file includes tests for SQL trees.
+The [test_sql_tree.py](https://github.com/mpudil/Random-forest/blob/master/test_sql_tree.py) file includes tests for SQL trees.
 
 
 ## User's Guide to Creating Classification Trees and Random Forest (General Information)
 
-The following instructions explain the functionality of the classification trees and random forest as implemented in the [classification_tree.py](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/classification_tree.py) module. 
+The following instructions explain the functionality of the classification trees and random forest as implemented in the [classification_tree.py](https://github.com/mpudil/Random-forest/blob/master/classification_tree.py) module. 
 
 ### Installations Necessary for Functionality
 
@@ -40,7 +40,7 @@ The following instructions explain the functionality of the classification trees
 This code was built using Python 3. Therefore, in order to ensure full functionality of the classification trees and random forest using Pandas dataframes as training or tests, it is necessary to use Python 3. Installation is available for free on Python's [website](https://www.python.org/downloads/)
 
 #### PostgreSQL and associated credentials
-While the sqlconnect function in the [sql_tree.py](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/sql_tree.py) module returns a cursor and runs functions that calculate impurity functions necessary to create the decision tree, it is necessary to have PostgreSQL installed and have associated credentials. This includes a host, database, username, and password. Note that these credentials must be passed through the sqlconnect functions to gain access to the aforementioned impurity functions. Click [here](https://www.postgresql.org/download/) to download PostgreSQL.
+While the sqlconnect function in the [sql_tree.py](https://github.com/mpudil/Random-forest/blob/master/sql_tree.py) module returns a cursor and runs functions that calculate impurity functions necessary to create the decision tree, it is necessary to have PostgreSQL installed and have associated credentials. This includes a host, database, username, and password. Note that these credentials must be passed through the sqlconnect functions to gain access to the aforementioned impurity functions. Click [here](https://www.postgresql.org/download/) to download PostgreSQL.
 
 ### Creating Python Decision Trees and Random Forest
 
@@ -54,7 +54,7 @@ In general, the x dataframe (whether used for training or predicting) must be an
 The Python decision tree class is relatively flexible in design in that processes such as pruning, cross-validation, and determining misclassification costs and impurity functions can be altered by the user. The inputs to create a classification tree include: the x_train and y_train datasets as explained previously, and the criterion used to calculate the impurity function. The criterion is defaulted to be bayes error, but can also be Gini index (via criterion="gini"), cross entropy (via criterion="cross_entropy") or a user-defined criterion set as a function of p that follows Python syntax (e.g. criterion="p*(1-p)^2). 
 
 
-Pruning the decision tree after creating it is technically optional, but highly recommended to reduce variance (you can read more about the bias and variance tradeoff [here](https://towardsdatascience.com/understanding-the-bias-variance-tradeoff-165e6942b229). Pruning the decision tree is performed via cross-validation of a list of several potential alphas after first constructing the decision tree. That is, the user can choose which alpha(s) to use to prune the tree, and how many cross-validation folds to include in the proccess. This is performed via the prune method. Explicit documentation of this method is shown in the [classification_tree.py](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/classification_tree.py) module, but in general, the prune function is performed by running tree.prune(folds, alphas), where tree is the DecisionTree object created. The default for pruning is to use cross-validation with 5 folds over the following set of alphas: [0.1, 0.5, 0.7]. 
+Pruning the decision tree after creating it is technically optional, but highly recommended to reduce variance (you can read more about the bias and variance tradeoff [here](https://towardsdatascience.com/understanding-the-bias-variance-tradeoff-165e6942b229). Pruning the decision tree is performed via cross-validation of a list of several potential alphas after first constructing the decision tree. That is, the user can choose which alpha(s) to use to prune the tree, and how many cross-validation folds to include in the proccess. This is performed via the prune method. Explicit documentation of this method is shown in the [classification_tree.py](https://github.com/mpudil/Random-forest/blob/master/classification_tree.py) module, but in general, the prune function is performed by running tree.prune(folds, alphas), where tree is the DecisionTree object created. The default for pruning is to use cross-validation with 5 folds over the following set of alphas: [0.1, 0.5, 0.7]. 
 
 After creating (and ideally, pruning) the DecisionTree, the tree can be used to perform predictions. This is done through the tree.predict method, which takes in a new_x argument: a dataframe that follows the same stucture as the x_train dataframe (including column names), but with new observations. That is, the new_x is an nxk matrix where k is equal to the number of columns in the x_train dataframe.
 
@@ -86,9 +86,9 @@ More information regarding Random Forests is explained below in the Additional D
 
 ### Creating and Using SQL Decision Trees
 
-This package additionally allows users to create decision trees using tables from SQL. As mentioned, it is crucial that the user has access to a SQL database as one will not be provided to them to maintain privacy. Specifically, the user must have ready the following credentials: host, database, user, password. Once this has been achieved, the [sql_tree.py](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/sql_tree.py) module includes a sqlconnect function that allows the user to create a psycopg2 cursor that will be used as an input to create the SQLTree.
+This package additionally allows users to create decision trees using tables from SQL. As mentioned, it is crucial that the user has access to a SQL database as one will not be provided to them to maintain privacy. Specifically, the user must have ready the following credentials: host, database, user, password. Once this has been achieved, the [sql_tree.py](https://github.com/mpudil/Random-forest/blob/master/sql_tree.py) module includes a sqlconnect function that allows the user to create a psycopg2 cursor that will be used as an input to create the SQLTree.
 
-Additionally, the [impurity_functions.sql](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/Resources/impurity_functions.sql) file includes functions necessary for determining impurities that the user should execute before attempting to create a SQL classification tree.
+Additionally, the [impurity_functions.sql](https://github.com/mpudil/Random-forest/blob/master/Resources/impurity_functions.sql) file includes functions necessary for determining impurities that the user should execute before attempting to create a SQL classification tree.
 
 The user should also have a table that includes all of the X's and the y the user would like to use. It is possible that the table has additional columns unlike the original DecisionTree or RandomForest classes for Pandas. However, the user must list the names of the x columns and y column that will be used to create the SQLTree, along with the table name and cursor. The table name cannot be a SQL command name or include punctuation. The SQL Tree can be created via:
 ```
@@ -102,13 +102,13 @@ Once the user has created the SQL Tree, it can be pruned using a specific alpha 
 
 ### Getting Data Within Region
 
-Functions in the [classification_tree.py](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/classification_tree.py) and [sql_tree.py](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/sql_tree.py) allow users to access data given specific paths or cutoffs. To subset data from dataframes from a particular path, use the get_data_in_region(x_df, y_df) which subsets the dataframe to only include the x and y associated with (a) particular path(s). For example, executing 
+Functions in the [classification_tree.py](https://github.com/mpudil/Random-forest/blob/master/classification_tree.py) and [sql_tree.py](https://github.com/mpudil/Random-forest/blob/master/sql_tree.py) allow users to access data given specific paths or cutoffs. To subset data from dataframes from a particular path, use the get_data_in_region(x_df, y_df) which subsets the dataframe to only include the x and y associated with (a) particular path(s). For example, executing 
 
 ```
 get_data_in_region(x_df, y_df, path = ['var1 < 5', 'var2 > 8'])
 ```
 
-will return the x dataframe and corresponding y dataframe where the path is true. Similarly, the get_data_in_region function in [sql_tree.py](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/sql_tree.py#L8) allows the user to run the SQL query to select all data that matches a particular path (format the same as for dataframes) with the option of fetching the results via fetch=True. 
+will return the x dataframe and corresponding y dataframe where the path is true. Similarly, the get_data_in_region function in [sql_tree.py](https://github.com/mpudil/Random-forest/blob/master/sql_tree.py#L8) allows the user to run the SQL query to select all data that matches a particular path (format the same as for dataframes) with the option of fetching the results via fetch=True. 
 
 
 
@@ -153,7 +153,7 @@ It is also possible to ensure that the tree is valid using the .is_valid propert
 ### Functionality of Random Forests
 A random forest is a collection of decision trees with the same properties as explained above, with the exception that rather than using the entire dataset, each of the trees use a subset of the data. Specifically, the rows of the data are sampled via bootstrapping (i.e. with replacement) whereas the columns of X are sampled via permutation (i.e. without replacement). See [here](https://towardsdatascience.com/understanding-random-forest-58381e0602d2) for further explanations regarding Random Forests. 
 
-The RandomForest class, available [here](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/random_forest.py), is constructed by creating trees from the DecisionTree class via the build_tree method. To create a random forest, the user must call the RandomForest class. As mentioned earlier in the "Creating and Using Python Random Forests" section above, they are required to input at minimum the x_train and y_train dataframe, and optionally the number of folds, alphas, criterion, n_trees, n_features, and sample_size. The init then calls the build_tree function and creates an array where each item is a DecisionTree with the specified attributes.
+The RandomForest class, available [here](https://github.com/mpudil/Random-forest/blob/master/random_forest.py), is constructed by creating trees from the DecisionTree class via the build_tree method. To create a random forest, the user must call the RandomForest class. As mentioned earlier in the "Creating and Using Python Random Forests" section above, they are required to input at minimum the x_train and y_train dataframe, and optionally the number of folds, alphas, criterion, n_trees, n_features, and sample_size. The init then calls the build_tree function and creates an array where each item is a DecisionTree with the specified attributes.
 
 The RandomForest class also has prediction capabilities, used in a similar way as the Decision Trees. The RandomForest method "predict" calls helper function/method "predict_row" for each row in the new_x dataset provided by the user. For each row, it calls each tree's predict function to classify the row. Once all of the trees return a prediction (see the above section for a recap on how this is performed), the Random Forest returns a dataframe of predictions to the user.
 
@@ -161,7 +161,7 @@ The RandomForest class also has prediction capabilities, used in a similar way a
 ## Functionality of SQL Decision Trees 
 The SQLNode and SQLTree classes are subclasses of the Node and DecisionTree superclasses, respectively. The overall functionality and design of either class are quite similar. The main differences here are:
 1. The SQLTree class is (obviously) used for data stored in SQL. It is flexible in that it can easily process larger tables with millions of observations.
-2. The nodes do not hold the actual data. Rather, they contain the path(s) that were taken to arrive at the node. These paths are used to make predictions through the following algorithm (see the "predict" methods for the SQLTree and SQLNode classes in the [sql_tree.py](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/sql_tree.py) module:
+2. The nodes do not hold the actual data. Rather, they contain the path(s) that were taken to arrive at the node. These paths are used to make predictions through the following algorithm (see the "predict" methods for the SQLTree and SQLNode classes in the [sql_tree.py](https://github.com/mpudil/Random-forest/blob/master/sql_tree.py) module:
     1.  Find leaf node by traversing tree through recursion 
     2. Determine what y is in the node
     3. Update all rows in "pred" column of new table where the test column values match 
@@ -172,15 +172,15 @@ The SQLNode and SQLTree classes are subclasses of the Node and DecisionTree supe
 4. The inputs into the SQLTree class vary from the original DecisionTree class (see "Creating and Using SQL Decision Trees"). 
 
 ## Benchmark
-The [Timing_Profiling](https://github.com/36-750/assignments-mpudil/tree/classification-tree-3/classification-tree/Timing_Profiling) file holds [code](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/Timing_Profiling/Benchmark.py) and graphics that have been used to obtain estimates about how the time it takes to create, prune, and predict using the classification trees, as well as how long it takes to create and predict on Random Forests with different sizes (rows and columns) of the data. In general, it was found that for small datasets, where rows*columns is less than 50, all methods take less than a minute to work. However, for moderate to large-sized data sets, pruning can take upwards of 15 minutes or so: about 6-8 times longer than creating the decision tree itself. This suggests need to use tools like cython to improve the time it takes to perform these processes since there are many moving parts and long processes that are taking place for each prune or for the creation of each node. 
+The [Timing_Profiling](https://github.com/mpudil/Random-forest/blob/master/Timing_Profiling) file holds [code](https://github.com/mpudil/Random-forest/blob/master/Timing_Profiling/Benchmark.py) and graphics that have been used to obtain estimates about how the time it takes to create, prune, and predict using the classification trees, as well as how long it takes to create and predict on Random Forests with different sizes (rows and columns) of the data. In general, it was found that for small datasets, where rows*columns is less than 50, all methods take less than a minute to work. However, for moderate to large-sized data sets, pruning can take upwards of 15 minutes or so: about 6-8 times longer than creating the decision tree itself. This suggests need to use tools like cython to improve the time it takes to perform these processes since there are many moving parts and long processes that are taking place for each prune or for the creation of each node. 
 
-As shown in the [Longest_Functions.txt](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/Timing_Profiling/Longest_Functions.txt) file, it takes longest to determine the impurity reduction of the potential best splits because it uses a double for loop to loop through every unique value of every column in the X matrix and determine the impurity. This could be improved by using cython to improve speed, which will be implemented in future versions. 
+As shown in the [Longest_Functions.txt](https://github.com/mpudil/Random-forest/blob/master/Timing_Profiling/Longest_Functions.txt) file, it takes longest to determine the impurity reduction of the potential best splits because it uses a double for loop to loop through every unique value of every column in the X matrix and determine the impurity. This could be improved by using cython to improve speed, which will be implemented in future versions. 
 
 ## Overview of Tests
 This section lists the major tests that have been performed to test the functionality, speed, and accuracy of the Decision Trees and Random Forests.
 
 ### Decision Tree Tests
-Tests for the DecisionTree class are found [here](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/test_classification_tree.py). The major tests can be grouped into the following 7 categories:
+Tests for the DecisionTree class are found [here](https://github.com/mpudil/Random-forest/blob/master/test_classification_tree.py). The major tests can be grouped into the following 7 categories:
 1. Ensuring unpruned DecisionTrees of various column lengths perfectly predict the training datasets used to initially create the tree and can correctly predict new data.
 2. Ensuring that each tree in the cases above are valid (see
 [this section](###Functionality-of-Nodes-and-Decision-Trees-in-Python) for clarification of what "valid" means). Also, trees with random data also end up being valid.
@@ -194,16 +194,16 @@ Tests for the DecisionTree class are found [here](https://github.com/36-750/assi
 7. Miscellaneous tests related to the functionality of the specific methods of the DecisionTree class
 
 ### Random Forest Tests
-Because of the randomness involved in the creation of the random forest, and because we have already made several tests to ensure that the decision trees are correct, the random forest tests found in the [test_random_forest.py](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/test_random_forest.py) file contain fewer tests than the decision tree tests. However, it was still possible to produce the following tests:
+Because of the randomness involved in the creation of the random forest, and because we have already made several tests to ensure that the decision trees are correct, the random forest tests found in the [test_random_forest.py](https://github.com/mpudil/Random-forest/blob/master/test_random_forest.py) file contain fewer tests than the decision tree tests. However, it was still possible to produce the following tests:
 
 1. Ensuring the random forest produces the correct number of trees with the correct dimensions
 2. Ensuring that each tree the random forest makes is valid
 3. Ensuring that the random forest predicts the training data with high accuracy for any random dataset (that follows the x_train and y_train rules)
 
-Along with these basic tests, the [Empirical folder](https://github.com/36-750/assignments-mpudil/tree/classification-tree-3/classification-tree/Empirical) uses real data to determine the accuracy of the Random Forests and Decision Trees under various circumstances.
+Along with these basic tests, the [Empirical folder](https://github.com/mpudil/Random-forest/blob/master/Empirical) uses real data to determine the accuracy of the Random Forests and Decision Trees under various circumstances.
 
 ### SQL Tree Tests
-The [test_sql.py](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/test_sql_tree.py) file includes several tests that were performed to ensure that the SQL Decision Trees were produced correctly. Because the SQLTree class is a subclass of DecisionTree, it was not necessary to test all methods used in the SQLTree. However, the following tests were possible to perform without being redundant:
+The [test_sql.py](https://github.com/mpudil/Random-forest/blob/master/test_sql_tree.py) file includes several tests that were performed to ensure that the SQL Decision Trees were produced correctly. Because the SQLTree class is a subclass of DecisionTree, it was not necessary to test all methods used in the SQLTree. However, the following tests were possible to perform without being redundant:
 
 1. Ensuring that predictions on the same dataset are the same for SQLTrees and DecisionTrees and that the paths taken are the same.
 2. Ensuring that the get_data_in_region function returns the correct subset of the data in SQL and matches the results from the classification tree get_data_in_region function.
@@ -213,7 +213,7 @@ The first test was performed by randomly generating data (i.e. an x_train, y_tra
 
 
 ### Empirical Tests
-[Data](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/Empirical/acceptance.csv) regarding acceptance into Berkeley was used in order to test the accuracy and prediction performance of the decision trees and random forest under various levels of alpha. As expected, the prediction performance varied by the level alpha that was used in the case of the Decision Tree, and by the number of trees and subsetting method (rows and columns per tree) when using random forests. The [analysis.txt](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/Empirical/analysis.txt) file explains the performance of the decision trees and random forest with the code used to run the empirical tests [here](https://github.com/36-750/assignments-mpudil/blob/classification-tree-3/classification-tree/Empirical/empirical.py). 
+[Data](https://github.com/mpudil/Random-forest/blob/master/Empirical/acceptance.csv) regarding acceptance into Berkeley was used in order to test the accuracy and prediction performance of the decision trees and random forest under various levels of alpha. As expected, the prediction performance varied by the level alpha that was used in the case of the Decision Tree, and by the number of trees and subsetting method (rows and columns per tree) when using random forests. The [analysis.txt](https://github.com/mpudil/Random-forest/blob/master/Empirical/analysis.txt) file explains the performance of the decision trees and random forest with the code used to run the empirical tests [here](https://github.com/mpudil/Random-forest/blob/master/Empirical/empirical.py). 
 
 ## Authors
 
